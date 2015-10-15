@@ -27,6 +27,6 @@ Envelope is blah blah blah and has three important properties:
 
 `envelope.config`: This will be used if your component has any configurations. For example, the 'Pluck' component's `config` consists of a 'key' and 'value'.
 
-`envelope.data`: This will be used if your component needs to keep any data within itself. For example, the 'Collect' component uses `data` to push values from the `config` to an array.
+`envelope.data`: This will be used if your component needs to keep any data within itself. For example, the 'Collect' component uses `data` as an array and pushes values from the `config` to it.
 
 ## Adding to registry???
