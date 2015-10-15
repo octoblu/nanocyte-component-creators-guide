@@ -16,17 +16,17 @@ yo nanocyte-component
 ```
 
 ## Creating your component
-After you have generated your component, you will need to edit the source file. For this example, it is located under `nanocyte-component-example/src/example.coffee`
+After you have generated your component, you will need to give your component functionality by editing the source file. For this example, it is located under `nanocyte-component-example/src/example.coffee`
 
-You can now start writing your component, however there are a few things about the `envelope` variable that need to be considered.
+You can now start writing your component, however there are a few things about the `envelope` variable that need to be considered...
 
 ### What is envelope?
-Envelope is blah blah blah and has three properties:
+Envelope is blah blah blah and has three important properties:
 
-`envelope.message` -
+`envelope.message`: This will be used if you want to use the entire message that was passed in. For example, the 'Equal' component uses it's `config` to check whether or not to pass on the `message`.
 
-`envelope.config` -
+`envelope.config`: This will be used if your component has any configurations. For example, the 'Pluck' component's `config` consists of a 'key' and 'value'.
 
-`envelope.data` -
+`envelope.data`: This will be used if your component needs to keep any data within itself. For example, the 'Collect' component uses `data` to push values from the `config` to an array.
 
 ## Adding to registry???
