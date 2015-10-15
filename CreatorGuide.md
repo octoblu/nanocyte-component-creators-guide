@@ -33,3 +33,14 @@ Envelope is blah blah blah and has three important properties:
 `envelope.data`: This will be used if your component needs to keep any data within itself. For example, the 'Collect' component uses `data` as an array and pushes values from the `config` to it.
 
 ## Adding to registry???
+
+### Registry component options
+- ”type": "nanocyte-component-pass-through",
+- ”linkedTo": ["check"]
+- ”linkedToPrev": Boolean 
+- ”linkedToNext”: Boolean (links to next node)
+- ”linkedToOutput": Boolean  (Outputs to Meshblu)
+- ”linkedToData": Boolean (Stores the state of node) 
+- ”linkedFromStop": Boolean (links to the stop event of the flow)
+- ”linkedFromStart": Boolean (links to the start event of the flow)
+- ”linkedToPulse": Boolean
