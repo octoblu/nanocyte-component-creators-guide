@@ -9,7 +9,7 @@ Before you can generate a nanocyte component, you will need to:
 npm install -g yo
 npm install -g generator-nanocyte-component
 ```
-_Yeoman (yo) is a tool that runs generators. generator-nanocyte-component is Octoblu's yo component generator._
+_'generator-nanocyte-component' is Octoblu's 'yo' component generator. Yeoman (yo) is a simple tool that will run your generators._
 
 Create a new directory, such as `nanocyte-component-example`, and `cd` into it.
 
