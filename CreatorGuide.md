@@ -6,8 +6,11 @@ Nanocyte components are lightweight nodes that can perform custom operations on 
 ## Generating your component
 Before you can generate a nanocyte component, you will need to:
 ```
-npm install generator-nanocyte-component
+npm install -g yo
+npm install -g generator-nanocyte-component
 ```
+_Yeoman (yo) is a tool that runs generators. generator-nanocyte-component is Octoblu's yo component generator._
+
 Create a new directory, such as `nanocyte-component-example`, and `cd` into it.
 
 Now you can generate your nanocyte component by:
