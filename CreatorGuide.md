@@ -24,7 +24,7 @@ After you have generated your component, you will need to give your component fu
 You can now start writing your component, however there are a few things about the `envelope` variable that need to be considered...
 
 ### What is envelope?
-Envelope is blah blah blah and has three important properties:
+Envelope will be available for all nanocyte components and has three important properties:
 
 `envelope.message`: This will be used if you want to use the entire message that was passed in. For example, the 'Equal' component uses it's `config` to check whether or not to pass on the `message`.
 
@@ -32,15 +32,87 @@ Envelope is blah blah blah and has three important properties:
 
 `envelope.data`: This will be used if your component needs to keep any data within itself. For example, the 'Collect' component uses `data` as an array and pushes values from the `config` to it.
 
-## Adding to registry???
+## Adding to registry
+After you have created your nanocyte component, you will need to add it the the `nanocyte-node-registry`. To do this, you will need to first clone the repository:
+```
+git clone https://github.com/octoblu/nanocyte-node-registry.git
+```
+Now you will need to edit the registry to include your component. The registry is located in `nanocyte-node-registry/registry.json`. There are a variety of properties to keep in mind when adding your component to the registry.
 
-### Registry component options
-- ”type": "nanocyte-component-pass-through",
-- ”linkedTo": ["check"]
-- ”linkedToPrev": Boolean 
-- ”linkedToNext”: Boolean (links to next node)
-- ”linkedToOutput": Boolean  (Outputs to Meshblu)
-- ”linkedToData": Boolean (Stores the state of node) 
-- ”linkedFromStop": Boolean (links to the stop event of the flow)
-- ”linkedFromStart": Boolean (links to the start event of the flow)
-- ”linkedToPulse": Boolean
+### Registry component properties
+`"composedOf"`: This will be used by every component and tells the registry how to build your component. For example, the 'greater than or equal' component is actually built in the registry by combining the functionality of the 'greater than' and 'equal' components:
+```
+"greater-than-equal": {
+  "composedOf": {
+    "greater-than": {},
+    "equal": {}
+  }
+}
+```
+
+`”type"`: This will also be used by every component and is the complete name of your component. For example:
+```
+"example": {
+  "composedOf": {
+    "example": {
+      "type": "nanocyte-component-example"
+    }
+  }
+}
+```
+
+`"sendWhitelist"`: This will be used if you need to send messages to a specific device. For example, our 'delay' component uses our interval service, which is a device with a UUID.
+```
+"example": {
+  "sendWhitelist": [super-awesome-uuid, another-awesome-uuid],
+  "composedOf": {}
+}
+```
+
+`”linkedTo"`: This will be used if you need to chain components together. For example:
+```
+"rss": {
+  "composedOf": {
+    "http-formatter": {
+      "type": "nanocyte-component-http-formatter",
+      "linkedToPrev": true,
+      "linkedTo": ["http-request"]
+    },
+    "http-request": {
+      "type": "nanocyte-component-http-request",
+      "linkedTo": ["parse-body"]
+    },
+    "parse-body": {
+      "type": "nanocyte-component-parse-body",
+      "linkedToNext": true
+    }
+  }
+}
+```
+
+`”linkedToPrev"`: This will be used if you need to tell your component to allow other nodes to connect to it as input. There is an example in the next property.
+
+`”linkedToNext”`: This will be used if you need to tell your component to allow itself to connect to other nodes as output. For example, this component can take input and send output:
+```
+"example": {
+  "composedOf": {
+    "example": {
+      "type": "nanocyte-component-example",
+      "linkedToPrev": true,
+      "linkedToNext": true
+    }
+  }
+}
+```
+
+`”linkedFromStart"`: This will be used if you need to tell your component to do something when your flow deploys, or starts. There is an example below.
+
+`”linkedFromStop"`: This will be used if you need to tell your component to do something when your flow stops. There is an example below.
+
+`”linkedToOutput"`: This will be used if you need to send your output to Meshblu. For example,
+
+`”linkedToData"`: Boolean (Stores the state of node)
+
+`”linkedToPulse"`: Boolean
+
+## Submitting a pull request
