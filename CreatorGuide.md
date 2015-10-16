@@ -40,7 +40,7 @@ git clone https://github.com/octoblu/nanocyte-node-registry.git
 Now you will need to edit the registry to include your component. The registry is located in `nanocyte-node-registry/registry.json`. There are a variety of properties to keep in mind when adding your component to the registry.
 
 ### Registry component properties
-`"composedOf"`|`Object`: This will be used by every component and tells the registry how to build your component. For example, the 'greater than or equal' component is actually built in the registry by combining the functionality of the 'greater than' and 'equal' components:
+`"composedOf"`|`Object`: This will be used by every component and tells the registry how to build your component. For example, the 'greater-than-equal' component is actually built in the registry by combining the functionality of the 'greater-than' and 'equal' components:
 ```
 "greater-than-equal": {
   "composedOf": {
@@ -61,7 +61,7 @@ Now you will need to edit the registry to include your component. The registry i
 }
 ```
 
-`"sendWhitelist"`|`Array`: This will be used if you need to send messages to a specific device. For example, our 'delay' component uses our interval service, which is a device with a UUID.
+`"sendWhitelist"`|`Array`: This will be used if you need to send messages to a specific device. For example, our 'delay' component uses our interval service, which is a device with a UUID:
 ```
 "example": {
   "sendWhitelist": [super-awesome-uuid, another-awesome-uuid],
@@ -69,7 +69,7 @@ Now you will need to edit the registry to include your component. The registry i
 }
 ```
 
-`”linkedTo"`|`Array`: This will be used if you need to chain components together. For example:
+`”linkedTo"`|`Array`: This will be used if you need to chain components together. For example, our 'rss' component has multiple steps: format, request, parse:
 ```
 "rss": {
   "composedOf": {
