@@ -166,9 +166,10 @@ Now you will need to edit the registry to include your component. The registry i
 
 ## Submitting a pull request
 Now that you have created your nanocyte component and added it to the registry, you will need to submit a pull request.
+
 1. Push your local branch of the registry: `git push origin branch-name`.
-1. Go to the node registry's [github page](https://github.com/octoblu/nanocyte-node-registry).
-1. Click the green button next to the current branch.
-1. Click 'Create a pull request'.
-1. Fill out the information and make sure that you are requesting your branch's changes to the master branch.
-1. Submit your request and wait for someone on the Octoblu team to accept it.
+2. Go to the node registry's [github page](https://github.com/octoblu/nanocyte-node-registry).
+3. Click the green button next to the current branch.
+4. Click 'Create a pull request'.
+5. Fill out the information and make sure that you are requesting your branch's changes to the master branch.
+6. Submit your request and wait for someone on the Octoblu team to accept it.
