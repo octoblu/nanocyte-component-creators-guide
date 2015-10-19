@@ -1,7 +1,7 @@
 # Nanocyte component creator's guide
 
 ## What are nanocyte components?
-Nanocyte components are lightweight nodes that can perform custom operations on your data in Octoblu. By creating your own nanocyte components, you can exert even more control over your IoT devices.
+Nanocyte components are lightweight nodes that can perform custom operations on your data in Octoblu flows. By creating your own nanocyte components, you can exert even more control over your IoT automations.
 
 ## Generating your component
 Before you can generate a nanocyte component, you will need to:
@@ -19,18 +19,18 @@ yo nanocyte-component
 ```
 
 ## Creating your component
-After you have generated your component, you will need to give your component functionality by editing the source file. For this example, it is located under `nanocyte-component-example/src/example.coffee`
+After you have generated your component, you will need to edit the source file. For this example, it is located under `nanocyte-component-example/src/example.coffee`
 
 You can now start writing your component, however there are a few things about the `envelope` variable that need to be considered...
 
 ### What is envelope?
-Envelope will be available for all nanocyte components and has three important properties:
+Envelope is a wrapper that wraps the incoming message, configuration options and data storage required by your component. Envelope will be available for all nanocyte components and has three important properties:
 
-`envelope.message`: This will be used if you want to use the entire message that was passed in. For example, the 'Equal' component uses it's `config` to check whether or not to pass on the `message`.
+`message`: This will be used if you want to use the entire message that was passed in. For example, the 'Equal' component uses it's `config` to check whether or not to pass on the `message`.
 
-`envelope.config`: This will be used if your component has any configurations. For example, the 'Pluck' component's `config` consists of a 'key' and 'value'.
+`config`: This will be used if your component has any configurations. For example, the 'Pluck' component's `config` consists of a 'key' and 'value'.
 
-`envelope.data`: This will be used if your component needs to keep any data within itself. For example, the 'Collect' component uses `data` as an array and pushes values from the `config` to it.
+`data`: This will be used if your component needs to keep any data within itself. For example, the 'Collect' component uses `data` as an array and pushes values from the `config` to it.
 
 ## Adding to registry
 After you have created your nanocyte component, you will need to add it the the `nanocyte-node-registry`. To do this, you will need to first clone the repository:
@@ -171,5 +171,5 @@ Now that you have created your nanocyte component and added it to the registry, 
 2. Go to the node registry's [github page](https://github.com/octoblu/nanocyte-node-registry).
 3. Click the green button next to the current branch.
 4. Click 'Create a pull request'.
-5. Fill out the information and make sure that you are requesting your branch's changes to the master branch.
+5. Fill out the information and make sure that you are requesting your branch's changes to the master branch. Also make sure to include a link to your new component's github repo.
 6. Submit your request and wait for someone on the Octoblu team to accept it.
